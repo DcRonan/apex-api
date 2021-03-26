@@ -17,7 +17,7 @@ class Api::V1::SportsController < ApplicationController
     if sport.save
       render json: sport, status: 200
     else
-      render json: { error: 'Error creating sport8' }
+      render json: { error: 'Error creating sport' }
     end
   end
 
