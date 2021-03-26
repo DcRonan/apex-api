@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: apex_api_production
-  username: apex_api
+  username: danielronan
   password: <%= ENV['APEX_API_DATABASE_PASSWORD'] %>
