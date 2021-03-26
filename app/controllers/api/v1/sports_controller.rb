@@ -7,9 +7,10 @@ class Api::V1::SportsController < ApplicationController
   def create
     sport = Sport.new(
       name: sport_params[:name],
-      time: sport_params[:time],
+      minutes: sport_params[:minutes],
+      hours: sport_params[:hours],
+      seconds: sport_params[:seconds],
       distance: sport_params[:distance],
-      type: sport_params[:type],
       notes: sport_params[:notes]
     )
 
@@ -33,6 +34,6 @@ class Api::V1::SportsController < ApplicationController
   private
 
   def sport_params
-    params.require(:sport.permit(%i[name time distance type notes]))
+    params.require(:sport.permit(%i[name minutes hours seconds distance notes]))
   end
 end
