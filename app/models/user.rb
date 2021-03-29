@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :trackers
   has_many :sports, through: :trackers
 
-  validates :username, presence: true
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: :true
   validates :password, presence: true, length: { minimum: 5 }
 end
