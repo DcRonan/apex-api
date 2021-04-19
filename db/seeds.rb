@@ -5,37 +5,3 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-User.create([{username: "dan-ronan", password: "123456"}])
-
-Sport.create([
-  { 
-    name: 'Morning 5k run',
-    minutes: 24,
-    seconds: 34,
-    distance: 5,
-    notes: '1 mile PB'
-  },
-  { 
-    name: 'Morning 5k run',
-    minutes: 24,
-    seconds: 34,
-    distance: 5,
-    notes: '1 mile PB'
-  },
-  { 
-    name: 'Morning 10k run',
-    hours: 1,
-    minutes: 24,
-    seconds: 34,
-    distance: 5,
-    notes: '1 mile PB'
-  },
-  { 
-    name: 'Morning 5k run',
-    minutes: 24,
-    seconds: 34,
-    distance: 5,
-    notes: '1 mile PB'
-  }
-])
