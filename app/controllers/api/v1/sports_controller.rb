@@ -13,7 +13,7 @@ class Api::V1::SportsController < ApplicationController
       distance: sport_params[:distance],
       notes: sport_params[:notes]
     )
-    
+
     if sport.save
       render json: sport, status: 200
     else
