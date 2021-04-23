@@ -1,13 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe 'Sports', type: :request do
-  let(:obj) { { name: 'Test Title', minutes: 50,
-    seconds: 10, hours: 1, distance: 12, notes: '1 mile PB'} }
+  let(:obj) do
+    { name: 'Test Title', minutes: 50,
+      seconds: 10, hours: 1, distance: 12, notes: '1 mile PB' }
+  end
   before(:example) do
     @user = User.create(username: 'test_user', password: '123456')
     token = JWT.encode({ user_id: @user.id }, 'yourSecret')
     @headers = { Authorization: "Bearer #{token}" }
-    @sport = @user.sports.create(name: 'Test Title', minutes: 50, seconds: 10, hours: 1, distance: 12, notes: '1 mile PB')
+    @sport = @user.sports.create(name: 'Test Title', minutes: 50,
+                                 seconds: 10, hours: 1, distance: 12, notes: '1 mile PB')
   end
 
   it 'shows all sports' do
@@ -17,8 +20,8 @@ RSpec.describe 'Sports', type: :request do
 
   it 'creates a sport' do
     post '/api/v1/sports',
-      params: obj,
-      headers: @headers
+         params: obj,
+         headers: @headers
     expect(response).to have_http_status(:ok)
   end
 
