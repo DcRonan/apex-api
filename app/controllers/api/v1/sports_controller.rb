@@ -1,23 +1,26 @@
 class Api::V1::SportsController < ApplicationController
   def index
     sports = Sport.all
-    render json: sports, status: 200
+    render json: sports, status: :ok
   end
 
   def create
-    sport = Sport.new(
-      name: sport_params[:name],
-      minutes: sport_params[:minutes],
-      hours: sport_params[:hours],
-      seconds: sport_params[:seconds],
-      distance: sport_params[:distance],
-      notes: sport_params[:notes]
-    )
+    sport = Sport.new(sport_params)
 
     if sport.save
-      render json: sport, status: 200
+      render json: sport, status: :ok
     else
       render json: { error: 'Error creating sport' }
+    end
+  end
+
+  def update
+    sport = Sport.find(params[:id])
+
+    if sport.update(sport_params)
+      render json: sport, status: :ok
+    else
+      render json: { error: 'Error updating sport' }
     end
   end
 
@@ -25,7 +28,7 @@ class Api::V1::SportsController < ApplicationController
     sport = Sport.find_by(id: params[:id])
 
     if sport
-      render json: sport, status: 200
+      render json: sport, status: :ok
     else
       render json: { error: 'Sport Not Found.' }
     end
@@ -34,6 +37,6 @@ class Api::V1::SportsController < ApplicationController
   private
 
   def sport_params
-    params.require(:sport).permit(%i[name minutes hours seconds distance notes])
+    params.permit(%i[name minutes hours seconds distance notes])
   end
 end
